@@ -40,4 +40,4 @@ def index():
             flash('Looks like you have changed your email!')
         session['email'] = form.email.data
         return redirect(url_for('index'))
-    return render_template('index.html', form=form,  name=session.get('name'), email=session.get('email') if re.match("(.+)@(.*)(\\.*)utoronto\\.(.*)",session.get("email")) else None)
+    return render_template('index.html', form=form,  name=session.get('name'), email=session.get('email') if session.get("email") != None and re.match("(.+)@(.*)(\\.*)utoronto\\.(.*)",session.get("email")) else None)
